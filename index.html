@@ -383,23 +383,28 @@
 
     .module-list {
       list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .module-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
       background: var(--dark-5);
       border: 1px solid var(--border-dim);
       border-radius: 8px;
-      padding: 16px 20px;
-      font-size: 14px;
-      color: var(--text-light);
+      overflow: hidden;
+      cursor: pointer;
       transition: border-color 0.2s;
     }
     .module-item:hover { border-color: var(--border); }
+    .module-item__header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: var(--text-light);
+      user-select: none;
+    }
     .module-item__num {
       font-size: 11px;
       font-weight: 700;
@@ -409,7 +414,57 @@
       padding: 3px 8px;
       border-radius: 4px;
       flex-shrink: 0;
-      margin-top: 1px;
+      white-space: nowrap;
+    }
+    .module-item__title {
+      flex: 1;
+      font-weight: 600;
+    }
+    .module-item__toggle {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(201,162,39,0.1);
+      border: 1px solid rgba(201,162,39,0.25);
+      color: var(--gold-main);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.2s;
+      line-height: 1;
+    }
+    .module-item.open .module-item__toggle { transform: rotate(45deg); background: rgba(201,162,39,0.2); }
+    .module-item__lessons {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 20px;
+    }
+    .module-item.open .module-item__lessons {
+      max-height: 500px;
+      padding: 0 20px 16px;
+    }
+    .module-item__lessons ul {
+      list-style: none;
+      border-top: 1px solid var(--border-dim);
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .module-item__lessons ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .module-item__lessons ul li::before {
+      content: '▸';
+      color: var(--gold-main);
+      flex-shrink: 0;
+      font-size: 11px;
+      margin-top: 2px;
     }
 
     /* ─── RESULTS ─── */
@@ -988,16 +1043,160 @@
     </p>
 
     <ul class="module-list">
-      <li class="module-item"><span class="module-item__num">Módulo 1</span> Fundamentos da Gestão Pública e Responsabilização</li>
-      <li class="module-item"><span class="module-item__num">Módulo 2</span> Legalidade, Formalidade e Devido Processo</li>
-      <li class="module-item"><span class="module-item__num">Módulo 3</span> Tribunais de Contas: Como Funcionam e Como Se Preparar</li>
-      <li class="module-item"><span class="module-item__num">Módulo 4</span> Ministério Público e Controle Externo</li>
-      <li class="module-item"><span class="module-item__num">Módulo 5</span> Estrutura Correta dos Atos Administrativos</li>
-      <li class="module-item"><span class="module-item__num">Módulo 6</span> Licitações e Contratos: Nova Lei de Licitações</li>
-      <li class="module-item"><span class="module-item__num">Módulo 7</span> Documentação Estratégica e Instrução de Processos</li>
-      <li class="module-item"><span class="module-item__num">Módulo 8</span> Gestão de Risco e Prevenção de Irregularidades</li>
-      <li class="module-item"><span class="module-item__num">Módulo 9</span> Defesas Administrativas e Recursos</li>
-      <li class="module-item"><span class="module-item__num">Módulo 10</span> Blindagem Institucional e Legado do Gestor</li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 1</span>
+          <span class="module-item__title">Fundamentos da Gestão Pública e Boas-Vindas</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Quem é Alessandro Callil.</li>
+            <li>Falta de formalidades.</li>
+            <li>Prefácio.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 2</span>
+          <span class="module-item__title">Assumindo a Gestão – Primeiros Passos Essenciais</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Decisões nos primeiros 180 dias / Transição administrativa / Verificação inicial.</li>
+            <li>Elaboração do relatório de desempenho.</li>
+            <li>Elaboração do relatório / Revisão dos cargos e salários.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 3</span>
+          <span class="module-item__title">Compliance e Obrigações Legais dos Gestores</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Revisão e redução dos cargos e salários.</li>
+            <li>Redução dos cargos e salários.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 4</span>
+          <span class="module-item__title">Tribunal de Contas – Como Funciona e Como se Proteger</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Transparência e participação popular.</li>
+            <li>Eficiência na gestão pública.</li>
+            <li>Normas e regulamentos que o gestor público deve conhecer.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 5</span>
+          <span class="module-item__title">Prevenção de Improbidade Administrativa</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Cuidados com contas bancárias da gestão pública.</li>
+            <li>Documentos essenciais para prestação de contas.</li>
+            <li>Balanço patrimonial.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 6</span>
+          <span class="module-item__title">Estratégias de Defesa e Gestão de Crises</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Balanço orçamentário.</li>
+            <li>Contratos e Licitações – Almoxarifado.</li>
+            <li>Almoxarifado.</li>
+            <li>Bens móveis e imóveis.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 7</span>
+          <span class="module-item__title">Gestão Orçamentária e Controle Financeiro</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Prestação de contas de diárias.</li>
+            <li>Terceirizações.</li>
+            <li>Terceirizações e horas extras.</li>
+            <li>Fundo de caixa e conformidades.</li>
+            <li>Quem é obrigado a prestar contas.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 8</span>
+          <span class="module-item__title">Planejamento Estratégico e Gestão Sustentável</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Resoluções do TCE e Limites da LRF.</li>
+            <li>Despesas de pessoal com cooperativas.</li>
+            <li>Prestação de contas dos recursos da educação.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 9</span>
+          <span class="module-item__title">Práticas Avançadas de Blindagem Jurídica</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Infringências identificadas pelo TCE nos instrumentos de planejamento.</li>
+            <li>Infringências identificadas pelo TCE.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="module-item" onclick="toggleModule(this)">
+        <div class="module-item__header">
+          <span class="module-item__num">Módulo 10</span>
+          <span class="module-item__title">Bônus e Material Extra</span>
+          <span class="module-item__toggle">+</span>
+        </div>
+        <div class="module-item__lessons">
+          <ul>
+            <li>Motivos e tipos de multas aplicadas pelo TCE.</li>
+            <li>Crimes que gestores públicos estão sujeitos por infringir a lei.</li>
+            <li>Como fazer defesas no TCE.</li>
+            <li>Postura ideal frente a uma auditoria do TCE.</li>
+            <li>Tipos de recursos no TCE.</li>
+          </ul>
+        </div>
+      </li>
+
     </ul>
 
   </div>
@@ -1295,6 +1494,13 @@
 
 <!-- ═══════════════════════════════ SCRIPTS ══════════════════════════════════ -->
 <script>
+  // Module accordion toggle
+  function toggleModule(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.module-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
   // FAQ toggle
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
