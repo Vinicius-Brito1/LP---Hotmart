@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor Público Blindado Brasil – Imersão em Gestão Pública e Blindagem Institucional</title>
+  <meta name="description" content="Formação especializada para gestores públicos que querem decidir com segurança, reduzir riscos e proteger seu nome e legado." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" href="assets/favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #111111;
+      color: #E8E8E8;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── COLOR TOKENS ─── */
+    :root {
+      --gold-light: #D4AF37;
+      --gold-main:  #C9A227;
+      --gold-dark:  #9B7B1A;
+      --gold-muted: #7A5F14;
+      --dark-1:     #0D0D0D;
+      --dark-2:     #111111;
+      --dark-3:     #181818;
+      --dark-4:     #1F1F1F;
+      --dark-5:     #252525;
+      --dark-6:     #2C2C2C;
+      --text-white: #FFFFFF;
+      --text-light: #E8E8E8;
+      --text-muted: #A0A0A0;
+      --text-dim:   #6B6B6B;
+      --border:     rgba(201,162,39,0.25);
+      --border-dim: rgba(255,255,255,0.08);
+    }
+
+    /* ─── UTILITIES ─── */
+    .container { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .container--wide { max-width: 1100px; }
+    .text-gold  { color: var(--gold-main); }
+    .text-white { color: var(--text-white); }
+    .text-muted { color: var(--text-muted); }
+    .uppercase  { text-transform: uppercase; }
+    .text-center { text-align: center; }
+
+    /* ─── SECTION ─── */
+    .section { padding: 80px 0; }
+    .section--dark  { background-color: var(--dark-1); }
+    .section--card  { background-color: var(--dark-3); }
+    .section--alt   { background-color: var(--dark-4); }
+
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-main);
+      background: rgba(201,162,39,0.08);
+      border: 1px solid rgba(201,162,39,0.3);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text-white);
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--gold-main); }
+
+    .section-sub {
+      font-size: clamp(15px, 2vw, 17px);
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+
+    .divider {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-main), transparent);
+      margin: 20px 0 32px;
+    }
+    .divider--center { margin: 20px auto 32px; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 16px 36px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .btn--primary {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-main) 50%, var(--gold-dark) 100%);
+      color: #0D0D0D;
+      box-shadow: 0 4px 24px rgba(201,162,39,0.35), 0 1px 4px rgba(0,0,0,0.4);
+    }
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,162,39,0.5), 0 2px 8px rgba(0,0,0,0.4);
+      background: linear-gradient(135deg, #E0C040 0%, var(--gold-light) 50%, var(--gold-main) 100%);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--gold-main);
+      border: 2px solid var(--gold-main);
+    }
+    .btn--outline:hover {
+      background: rgba(201,162,39,0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn--lg { font-size: 16px; padding: 20px 48px; border-radius: 8px; }
+    .btn--full { width: 100%; }
+
+    .cta-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+    }
+    .cta-sub span { color: var(--gold-main); }
+
+    /* ─── SHIELD SVG ICON ─── */
+    .shield-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: radial-gradient(ellipse at 60% 0%, rgba(201,162,39,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 10% 80%, rgba(201,162,39,0.06) 0%, transparent 50%),
+                  var(--dark-1);
+      padding: 64px 0 80px;
+      border-bottom: 1px solid var(--border-dim);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .hero__logo-shield { width: 64px; height: 64px; }
+    .hero__logo-text { line-height: 1.1; }
+    .hero__logo-text .line1 { font-size: 22px; font-weight: 900; text-transform: uppercase; color: var(--text-white); letter-spacing: 2px; }
+    .hero__logo-text .line2 { font-size: 14px; font-weight: 400; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; margin-top: 2px; }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-main);
+      border: 1px solid rgba(201,162,39,0.4);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero__badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold-main);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero__headline {
+      font-size: clamp(32px, 5.5vw, 58px);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: var(--text-white);
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .hero__headline em { color: var(--gold-main); font-style: normal; }
+
+    .hero__tagline {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero__cta { margin-bottom: 48px; }
+
+    .hero__stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-dim);
+    }
+    .hero__stat-item { display: flex; flex-direction: column; gap: 2px; }
+    .hero__stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--gold-main);
+      line-height: 1;
+    }
+    .hero__stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ─── PAIN POINTS ─── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .pain-card {
+      background: var(--dark-5);
+      border: 1px solid var(--border-dim);
+      border-left: 3px solid var(--gold-muted);
+      padding: 20px 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.2s;
+    }
+    .pain-card:hover { border-left-color: var(--gold-main); }
+    .pain-card__icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pain-card__text { font-size: 14px; color: var(--text-light); line-height: 1.5; }
+
+    /* ─── TRUTH SECTION ─── */
+    .truth-box {
+      background: linear-gradient(135deg, var(--dark-4) 0%, var(--dark-5) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 48px;
+      margin-top: 40px;
+    }
+    .truth-box__quote {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.5;
+      border-left: 4px solid var(--gold-main);
+      padding-left: 24px;
+      margin-bottom: 32px;
+    }
+    .truth-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      list-style: none;
+    }
+    .truth-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .truth-list li::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold-main);
+      flex-shrink: 0;
+    }
+
+    /* ─── FOR WHOM ─── */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .audience-card {
+      background: var(--dark-4);
+      border: 1px solid var(--border-dim);
+      border-radius: 10px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .audience-card:hover {
+      border-color: var(--border);
+      background: var(--dark-5);
+    }
+    .audience-card__num {
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(201,162,39,0.18);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 36px;
+    }
+    .audience-card__content h4 { font-size: 15px; font-weight: 700; color: var(--text-white); margin-bottom: 4px; }
+    .audience-card__content p  { font-size: 13px; color: var(--text-muted); }
+
+    /* ─── COURSE STRUCTURE ─── */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 40px 0;
+    }
+    .course-stat-card {
+      background: var(--dark-4);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .course-stat-card__num {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .course-stat-card__label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+
+    .module-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .module-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--dark-5);
+      border: 1px solid var(--border-dim);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: var(--text-light);
+      transition: border-color 0.2s;
+    }
+    .module-item:hover { border-color: var(--border); }
+    .module-item__num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold-main);
+      background: rgba(201,162,39,0.1);
+      border: 1px solid rgba(201,162,39,0.2);
+      padding: 3px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── RESULTS ─── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .result-card {
+      background: var(--dark-4);
+      border: 1px solid var(--border-dim);
+      border-top: 2px solid var(--gold-main);
+      border-radius: 10px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .result-card:hover { transform: translateY(-4px); border-top-color: var(--gold-light); }
+    .result-card__icon { font-size: 28px; margin-bottom: 14px; }
+    .result-card__title { font-size: 15px; font-weight: 700; color: var(--text-white); margin-bottom: 8px; }
+    .result-card__desc  { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── INSTRUCTOR ─── */
+    .instructor-card {
+      background: linear-gradient(135deg, var(--dark-4), var(--dark-5));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: stretch;
+      margin-top: 40px;
+    }
+    .instructor-card > div:first-child {
+      display: flex;
+    }
+    .instructor-avatar {
+      width: 220px;
+      height: 100%;
+      min-height: 300px;
+      border-radius: 12px;
+      border: 3px solid var(--gold-main);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,162,39,0.15);
+    }
+    .instructor-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .instructor-name { font-size: 28px; font-weight: 900; color: var(--text-white); margin-bottom: 4px; }
+    .instructor-title { font-size: 13px; color: var(--gold-main); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+    .instructor-bio  { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; }
+    .instructor-creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .cred-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-main);
+      background: rgba(201,162,39,0.08);
+      border: 1px solid rgba(201,162,39,0.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    /* ─── INVESTMENT ─── */
+    .pricing-card {
+      background: linear-gradient(180deg, var(--dark-4) 0%, var(--dark-3) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 520px;
+      margin: 0 auto;
+      box-shadow: 0 16px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,162,39,0.1);
+    }
+    .pricing-card__header {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-main));
+      padding: 24px 32px;
+      text-align: center;
+    }
+    .pricing-card__header-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: rgba(0,0,0,0.6);
+      margin-bottom: 4px;
+    }
+    .pricing-card__header-title { font-size: 20px; font-weight: 900; color: #0D0D0D; }
+
+    .pricing-card__body { padding: 40px 32px; }
+    .pricing-card__price-block { text-align: center; margin-bottom: 32px; }
+    .pricing-card__old-price {
+      font-size: 16px;
+      color: var(--text-dim);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+    .pricing-card__price {
+      font-size: clamp(40px, 8vw, 56px);
+      font-weight: 900;
+      color: var(--text-white);
+      line-height: 1;
+    }
+    .pricing-card__price .currency {
+      font-size: 24px;
+      vertical-align: super;
+      color: var(--gold-main);
+      margin-right: 4px;
+    }
+    .pricing-card__note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .pricing-includes {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .pricing-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-light);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .pricing-includes li:last-child { border-bottom: none; }
+    .pricing-includes li::before {
+      content: '✓';
+      color: var(--gold-main);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── GUARANTEE ─── */
+    .guarantee-box {
+      background: var(--dark-4);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      max-width: 640px;
+      margin: 48px auto 0;
+    }
+    .guarantee-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold-main));
+      font-size: 28px;
+      font-weight: 900;
+      color: #0D0D0D;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(201,162,39,0.4);
+    }
+    .guarantee-badge span { font-size: 10px; letter-spacing: 1px; }
+    .guarantee-title { font-size: 22px; font-weight: 800; color: var(--text-white); margin-bottom: 12px; }
+    .guarantee-text  { font-size: 14px; color: var(--text-muted); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+
+    /* ─── IMPORTANT / DISCLAIMER ─── */
+    .disclaimer-box {
+      background: var(--dark-4);
+      border: 1px solid rgba(201,162,39,0.15);
+      border-left: 4px solid var(--gold-main);
+      border-radius: 8px;
+      padding: 32px;
+      margin-top: 40px;
+    }
+    .disclaimer-title { font-size: 17px; font-weight: 800; color: var(--text-white); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .disclaimer-list  { list-style: none; }
+    .disclaimer-list li {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .disclaimer-list li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--gold-main);
+    }
+
+    /* ─── FAQ ─── */
+    .faq-list { margin-top: 40px; }
+    .faq-item {
+      background: var(--dark-4);
+      border: 1px solid var(--border-dim);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover { border-color: var(--border); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+      color: var(--text-white);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+    .faq-question:hover { color: var(--gold-main); }
+    .faq-toggle {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(201,162,39,0.1);
+      border: 1px solid rgba(201,162,39,0.25);
+      color: var(--gold-main);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.2s;
+      line-height: 1;
+    }
+    .faq-answer {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); background: rgba(201,162,39,0.2); }
+    .faq-item.open .faq-answer  { max-height: 400px; padding: 0 24px 20px; }
+
+    /* ─── CLOSING CTA ─── */
+    .closing {
+      background: radial-gradient(ellipse at center, rgba(201,162,39,0.1) 0%, transparent 65%), var(--dark-1);
+      padding: 96px 0;
+      text-align: center;
+      border-top: 1px solid var(--border-dim);
+    }
+    .closing__headline {
+      font-size: clamp(28px, 5vw, 50px);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text-white);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .closing__headline em { color: var(--gold-main); font-style: normal; }
+    .closing__sub { font-size: 17px; color: var(--text-muted); max-width: 500px; margin: 0 auto 40px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark-1);
+      border-top: 1px solid var(--border-dim);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    .footer-tagline { font-size: 14px; color: var(--text-muted); font-style: italic; }
+    .footer-copy    { font-size: 12px; color: var(--text-dim); }
+
+    /* ─── STICKY HEADER ─── */
+    .sticky-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dim);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    .sticky-nav.visible { transform: translateY(0); }
+    .sticky-nav__logo { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-white); }
+    .sticky-nav__logo span { color: var(--gold-main); }
+    .sticky-nav .btn { padding: 10px 24px; font-size: 13px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .section { padding: 56px 0; }
+
+      .instructor-card {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        gap: 24px;
+      }
+      .instructor-card > div:first-child { display: block; }
+      .instructor-avatar { width: 100%; height: 320px; min-height: unset; }
+
+      .truth-box { padding: 32px 24px; }
+      .pricing-card__body { padding: 32px 24px; }
+      .guarantee-box { padding: 32px 24px; }
+
+      .hero__stats { gap: 20px; }
+      .hero__stat-num { font-size: 22px; }
+
+      .sticky-nav__logo { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .btn--lg { padding: 16px 28px; font-size: 14px; }
+      .course-grid { grid-template-columns: 1fr 1fr; }
+      .section-title { font-size: 24px; }
+    }
+
+    /* ─── DECORATIVE RULE ─── */
+    .gold-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ STICKY NAV ═══════════════════════════════ -->
+<nav class="sticky-nav" id="stickyNav">
+  <div class="sticky-nav__logo">Gestor Público <span>Blindado</span></div>
+  <a href="#investimento" class="btn btn--primary">Quero Me Blindar Agora</a>
+</nav>
+
+<!-- ═══════════════════════════════════ HERO ════════════════════════════════ -->
+<section class="hero" id="topo">
+  <div class="container">
+
+    <div class="hero__logo">
+      <!-- Shield SVG -->
+      <svg class="hero__logo-shield" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 5L10 22V55C10 76 28 95 50 105C72 95 90 76 90 55V22L50 5Z"
+              fill="none" stroke="#C9A227" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M50 18L22 31V55C22 71 34 85 50 93C66 85 78 71 78 55V31L50 18Z"
+              fill="rgba(201,162,39,0.08)" stroke="rgba(201,162,39,0.4)" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <div class="hero__logo-text">
+        <div class="line1">Gestor Público <span style="color:var(--gold-main);">Blindado</span></div>
+      </div>
+    </div>
+
+    <div class="hero__badge">Imersão em Gestão Pública e Blindagem Institucional</div>
+
+    <h1 class="hero__headline">
+      Gestão Pública Segura:<br>
+      <em>Seu Nome Limpo,</em><br>
+      Seu Legado Intacto.
+    </h1>
+
+    <p class="hero__tagline">
+      A formação especializada para gestores públicos que querem decidir com segurança, reduzir riscos e proteger sua reputação profissional.
+    </p>
+
+    <div class="hero__cta">
+      <a href="#investimento" class="btn btn--primary btn--lg">
+        <svg class="shield-icon" viewBox="-2 -2 28 28" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7L12 2z"/></svg>
+        Quero Me Blindar Agora
+      </a>
+      <p class="cta-sub">Acesso imediato &nbsp;·&nbsp; <span>Garantia de 7 dias</span> &nbsp;·&nbsp; Suporte oficial</p>
+    </div>
+
+    <div class="hero__stats">
+      <div class="hero__stat-item">
+        <span class="hero__stat-num">34</span>
+        <span class="hero__stat-label">Aulas</span>
+      </div>
+      <div class="hero__stat-item">
+        <span class="hero__stat-num">10</span>
+        <span class="hero__stat-label">Módulos</span>
+      </div>
+      <div class="hero__stat-item">
+        <span class="hero__stat-num">15+</span>
+        <span class="hero__stat-label">Anos de experiência do professor</span>
+      </div>
+      <div class="hero__stat-item">
+        <span class="hero__stat-num">7</span>
+        <span class="hero__stat-label">Dias de garantia</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- ═════════════════════════════ PAIN POINTS ═══════════════════════════════ -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-label">O Problema</div>
+    <h2 class="section-title">
+      Se você é gestor público, assessor ou servidor da área administrativa...
+    </h2>
+    <div class="divider"></div>
+    <p style="font-size:16px;color:var(--text-muted);max-width:640px;line-height:1.8;margin-bottom:16px;">
+      O maior peso do cargo não está em <em>escolher</em> o que fazer — está em <strong style="color:var(--text-light);">assinar</strong>. E a insegurança que acompanha cada rubrica pode custar muito mais do que você imagina.
+    </p>
+    <p style="font-size:16px;color:var(--text-muted);max-width:640px;line-height:1.8;">
+      A insegurança não está na má-fé. Está na <strong style="color:var(--text-white);">falta de aprofundamento técnico</strong> sobre como fazer certo.
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card"><span class="pain-card__icon">⚠️</span><p class="pain-card__text">Questionamentos do TCE (Tribunal de Contas)</p></div>
+      <div class="pain-card"><span class="pain-card__icon">⚠️</span><p class="pain-card__text">Representações do Ministério Público</p></div>
+      <div class="pain-card"><span class="pain-card__icon">⚠️</span><p class="pain-card__text">Auditorias surpresa que expõem falhas processuais</p></div>
+      <div class="pain-card"><span class="pain-card__icon">⚠️</span><p class="pain-card__text">Processos administrativos com responsabilização pessoal</p></div>
+      <div class="pain-card"><span class="pain-card__icon">⚠️</span><p class="pain-card__text">Risco de recomposição de recursos ao erário</p></div>
+      <div class="pain-card"><span class="pain-card__icon">⚠️</span><p class="pain-card__text">Falhas formais que poderiam ter sido evitadas</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════ WHAT IS IT ════════════════════════════════ -->
+<section class="section section--card">
+  <div class="container">
+    <div class="section-label">A Solução</div>
+    <h2 class="section-title">
+      O que é o <span>Gestor Público Blindado</span>?
+    </h2>
+    <div class="divider"></div>
+    <p class="section-sub" style="margin-bottom:32px;text-align:left;">
+      Uma formação completa sobre como lidar com Tribunais de Contas e Ministério Público através de procedimento correto, tecnicidade e compliance. Para quem quer decidir com segurança, assinar atos administrativos com tranquilidade e reduzir o risco de questionamentos.
+    </p>
+    <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+      <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-light);background:var(--dark-5);padding:16px;border-radius:8px;border:1px solid var(--border-dim);">
+        <span style="color:var(--gold-main);font-size:18px;">✓</span> Decidir com segurança
+      </li>
+      <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-light);background:var(--dark-5);padding:16px;border-radius:8px;border:1px solid var(--border-dim);">
+        <span style="color:var(--gold-main);font-size:18px;">✓</span> Assinar atos administrativos com tranquilidade
+      </li>
+      <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-light);background:var(--dark-5);padding:16px;border-radius:8px;border:1px solid var(--border-dim);">
+        <span style="color:var(--gold-main);font-size:18px;">✓</span> Estruturar processos corretamente
+      </li>
+      <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-light);background:var(--dark-5);padding:16px;border-radius:8px;border:1px solid var(--border-dim);">
+        <span style="color:var(--gold-main);font-size:18px;">✓</span> Reduzir riscos de questionamentos
+      </li>
+      <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-light);background:var(--dark-5);padding:16px;border-radius:8px;border:1px solid var(--border-dim);">
+        <span style="color:var(--gold-main);font-size:18px;">✓</span> Agir com técnica e respaldo
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════ TRUTH SECTION ════════════════════════════════ -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-label">A Verdade</div>
+    <h2 class="section-title">A Verdade Que <span>Poucos Falam</span></h2>
+    <div class="divider"></div>
+    <div class="truth-box">
+      <p class="truth-box__quote">
+        "A maioria dos problemas do gestor público não vem de má-fé — vem de falhas formais, procedimentos incompletos e lacunas técnicas que poderiam ser evitadas com o conhecimento certo."
+      </p>
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">As raízes mais comuns dos questionamentos:</p>
+      <ul class="truth-list">
+        <li>Falhas formais nos atos</li>
+        <li>Procedimentos incompletos</li>
+        <li>Lacunas no conhecimento técnico</li>
+        <li>Interpretações equivocadas da norma</li>
+        <li>Falta de padronização dos processos</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:28px;font-size:15px;color:var(--text-muted);max-width:640px;line-height:1.8;">
+      Não existe no mercado uma formação que aprofunde o tema com <strong style="color:var(--text-white);">foco real em blindagem administrativa</strong>. O Gestor Público Blindado preenche exatamente essa lacuna — ensinando a estruturar atos, antecipar questionamentos e agir de forma preventiva.
+    </p>
+  </div>
+</section>
+
+<!-- ═════════════════════════ FOR WHOM ══════════════════════════════════════ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-label">Público-Alvo</div>
+    <h2 class="section-title">Para Quem É <span>Essa Formação?</span></h2>
+    <div class="divider"></div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="audience-card__num">01</span>
+        <div class="audience-card__content">
+          <h4>Gestores Públicos</h4>
+          <p>Municipais, estaduais e federais que assinam atos e precisam de respaldo técnico</p>
+        </div>
+      </div>
+      <div class="audience-card">
+        <span class="audience-card__num">02</span>
+        <div class="audience-card__content">
+          <h4>Secretários e Ordenadores de Despesa</h4>
+          <p>Responsáveis por autorizar gastos e movimentações financeiras</p>
+        </div>
+      </div>
+      <div class="audience-card">
+        <span class="audience-card__num">03</span>
+        <div class="audience-card__content">
+          <h4>Assessores Técnicos</h4>
+          <p>Que auxiliam nas decisões administrativas e precisam embasar pareceres</p>
+        </div>
+      </div>
+      <div class="audience-card">
+        <span class="audience-card__num">04</span>
+        <div class="audience-card__content">
+          <h4>Servidores das Áreas Administrativa, Financeira e de Planejamento</h4>
+          <p>Que lidam com processos e precisam garantir a conformidade dos procedimentos</p>
+        </div>
+      </div>
+      <div class="audience-card">
+        <span class="audience-card__num">05</span>
+        <div class="audience-card__content">
+          <h4>Advogados, Administradores e Contadores do Setor Público</h4>
+          <p>Que prestam consultoria e precisam dominar a blindagem administrativa</p>
+        </div>
+      </div>
+      <div class="audience-card">
+        <span class="audience-card__num">06</span>
+        <div class="audience-card__content">
+          <h4>Estudantes e Futuros Gestores</h4>
+          <p>Que pretendem atuar na administração pública e querem sair na frente</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ COURSE STRUCTURE ═════════════════════════════════ -->
+<section class="section section--dark" id="curso">
+  <div class="container">
+    <div class="section-label">A Formação</div>
+    <h2 class="section-title">Como <span>Funciona</span></h2>
+    <div class="divider"></div>
+
+    <div class="course-grid">
+      <div class="course-stat-card">
+        <div class="course-stat-card__num">34</div>
+        <div class="course-stat-card__label">Aulas</div>
+      </div>
+      <div class="course-stat-card">
+        <div class="course-stat-card__num">10</div>
+        <div class="course-stat-card__label">Módulos Estruturados</div>
+      </div>
+      <div class="course-stat-card">
+        <div class="course-stat-card__num">100%</div>
+        <div class="course-stat-card__label">Foco em Aplicação Prática</div>
+      </div>
+      <div class="course-stat-card">
+        <div class="course-stat-card__num">∞</div>
+        <div class="course-stat-card__label">Acesso à Formação Completa</div>
+      </div>
+    </div>
+
+    <p style="font-size:15px;color:var(--text-muted);max-width:640px;margin:0 0 32px;line-height:1.8;">
+      A formação é estruturada em <strong style="color:var(--text-white);">34 aulas organizadas em 10 módulos</strong>, com progressão lógica que vai do diagnóstico dos riscos à blindagem completa dos seus atos administrativos.
+    </p>
+
+    <ul class="module-list">
+      <li class="module-item"><span class="module-item__num">Módulo 1</span> Fundamentos da Gestão Pública e Responsabilização</li>
+      <li class="module-item"><span class="module-item__num">Módulo 2</span> Legalidade, Formalidade e Devido Processo</li>
+      <li class="module-item"><span class="module-item__num">Módulo 3</span> Tribunais de Contas: Como Funcionam e Como Se Preparar</li>
+      <li class="module-item"><span class="module-item__num">Módulo 4</span> Ministério Público e Controle Externo</li>
+      <li class="module-item"><span class="module-item__num">Módulo 5</span> Estrutura Correta dos Atos Administrativos</li>
+      <li class="module-item"><span class="module-item__num">Módulo 6</span> Licitações e Contratos: Nova Lei de Licitações</li>
+      <li class="module-item"><span class="module-item__num">Módulo 7</span> Documentação Estratégica e Instrução de Processos</li>
+      <li class="module-item"><span class="module-item__num">Módulo 8</span> Gestão de Risco e Prevenção de Irregularidades</li>
+      <li class="module-item"><span class="module-item__num">Módulo 9</span> Defesas Administrativas e Recursos</li>
+      <li class="module-item"><span class="module-item__num">Módulo 10</span> Blindagem Institucional e Legado do Gestor</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ RESULTS ══════════════════════════════════════ -->
+<section class="section section--card">
+  <div class="container">
+    <div class="section-label">Resultados</div>
+    <h2 class="section-title text-center">O Resultado <span>Que Você Busca</span></h2>
+    <div class="divider divider--center"></div>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-card__icon">🛡️</div>
+        <h3 class="result-card__title">Decisões com Segurança</h3>
+        <p class="result-card__desc">Tome decisões administrativas respaldado por técnica e conhecimento, sem a ansiedade de assinar.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">📋</div>
+        <h3 class="result-card__title">Clareza sobre Formalidade e Legalidade</h3>
+        <p class="result-card__desc">Entenda o que é exigido em cada etapa e estruture seus processos para resistir a qualquer auditoria.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">🔍</div>
+        <h3 class="result-card__title">Ação Preventiva</h3>
+        <p class="result-card__desc">Antecipe questionamentos antes que eles aconteçam, organizando documentos de forma estratégica.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">📉</div>
+        <h3 class="result-card__title">Menos Apontamentos em Auditoria</h3>
+        <p class="result-card__desc">Reduza significativamente a incidência de falhas que geram representações e processos.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">🏛️</div>
+        <h3 class="result-card__title">Reputação Profissional Preservada</h3>
+        <p class="result-card__desc">Proteja seu nome, sua carreira e o legado que você está construindo na gestão pública.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card__icon">⚖️</div>
+        <h3 class="result-card__title">Respaldo Técnico Real</h3>
+        <p class="result-card__desc">Atue com a fundamentação que o cargo exige e que os órgãos de controle esperam de você.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ INSTRUCTOR ═══════════════════════════════════ -->
+<section class="section section--dark" id="professor">
+  <div class="container">
+    <div class="section-label">O Professor</div>
+    <h2 class="section-title">Quem Vai Te <span>Ensinar</span></h2>
+    <div class="divider"></div>
+    <div class="instructor-card">
+      <div>
+        <div class="instructor-avatar">
+          <img src="assets/foto-professor.jpg" alt="Alessandro Callil" />
+        </div>
+      </div>
+      <div>
+        <h3 class="instructor-name">Alessandro Callil</h3>
+        <p class="instructor-title">Advogado · Economista · Diretor de Políticas Institucionais</p>
+        <p class="instructor-bio">
+          Com mais de 15 anos de atuação na advocacia, Alessandro Callil se especializou em crimes de colarinho branco e improbidade administrativa — áreas que exigem domínio profundo sobre o funcionamento dos órgãos de controle.
+          <br><br>
+          Mestre em Direito Administrativo, com pós-graduação em Economia do Setor Público e Direito Tributário. Foi auditor de contas e gestor público antes de se tornar advogado. Hoje, dirige a área de Políticas Institucionais da Callil Advogados e da Callil Soluções.
+          <br><br>
+          Conhece os dois lados: o gestor que assina e o profissional que defende — e é exatamente essa visão 360° que ele traz para a formação.
+        </p>
+        <div class="instructor-creds">
+          <span class="cred-tag">Mestre em Direito Administrativo</span>
+          <span class="cred-tag">Pós-grad. em Economia do Setor Público</span>
+          <span class="cred-tag">Pós-grad. em Direito Tributário</span>
+          <span class="cred-tag">Ex-Auditor de Contas</span>
+          <span class="cred-tag">Ex-Gestor Público</span>
+          <span class="cred-tag">15+ anos de advocacia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ INVESTMENT ═══════════════════════════════════ -->
+<section class="section section--alt" id="investimento">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label" style="display:inline-block;">Investimento</div>
+      <h2 class="section-title" style="margin-top:12px;">Garanta Sua <span>Vaga Agora</span></h2>
+      <div class="divider divider--center"></div>
+      <p class="section-sub">
+        Considerando o custo de um único questionamento administrativo, essa formação não é despesa — é proteção.
+      </p>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-card__header">
+        <div class="pricing-card__header-label">Formação Completa</div>
+        <div class="pricing-card__header-title">Gestor Público Blindado Brasil</div>
+      </div>
+      <div class="pricing-card__body">
+        <div class="pricing-card__price-block">
+          <p class="pricing-card__old-price">R$ 2.999,00</p>
+          <div class="pricing-card__price">
+            <span class="currency">R$</span>1.997<small style="font-size:0.45em;color:var(--text-muted)">,00</small>
+          </div>
+          <p class="pricing-card__note">Pagamento único · Sem mensalidades · Sem recorrência</p>
+        </div>
+
+        <ul class="pricing-includes">
+          <li>34 aulas em 10 módulos estruturados</li>
+          <li>Formação completa em blindagem administrativa</li>
+          <li>Foco em aplicação prática e real</li>
+          <li>Acesso à plataforma de ensino</li>
+          <li>Certificado de conclusão</li>
+          <li>Suporte oficial durante o curso</li>
+          <li>Garantia incondicional de 7 dias</li>
+        </ul>
+
+        <a href="https://pay.hotmart.com/U102769703R?checkoutMode=10&bid=1779305277608" target="_blank" rel="noopener" class="btn btn--primary btn--lg btn--full">
+          <svg class="shield-icon" viewBox="-2 -2 28 28" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7L12 2z"/></svg>
+          Quero Me Blindar Agora
+        </a>
+        <p class="cta-sub text-center">Acesso imediato &nbsp;·&nbsp; <span>Garantia de 7 dias</span> &nbsp;·&nbsp; Suporte oficial</p>
+      </div>
+    </div>
+
+    <!-- Guarantee -->
+    <div class="guarantee-box">
+      <div class="guarantee-badge">7<span>DIAS</span></div>
+      <h3 class="guarantee-title">Garantia Incondicional de 7 Dias</h3>
+      <p class="guarantee-text">
+        Se entender que o conteúdo não é para você, basta solicitar o cancelamento dentro do prazo. Sem questionamentos, sem burocracia. <strong style="color:var(--gold-main);">Risco zero.</strong>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ DISCLAIMER ═══════════════════════════════════ -->
+<section class="section section--dark">
+  <div class="container" style="max-width:780px;">
+    <div class="section-label">Importante</div>
+    <h2 class="section-title">Antes de Decidir, <span>Leia Isso</span></h2>
+    <div class="divider"></div>
+    <div class="disclaimer-box">
+      <div class="disclaimer-title">O que essa formação NÃO promete:</div>
+      <ul class="disclaimer-list">
+        <li>Não promete imunidade total contra fiscalizações</li>
+        <li>Não promete milagres nem atalhos</li>
+        <li>Não ensina a "driblar" os órgãos de controle</li>
+      </ul>
+      <div class="disclaimer-title" style="margin-top:24px;">O que essa formação ENTREGA:</div>
+      <ul class="disclaimer-list">
+        <li>Técnica: o conhecimento aplicado da forma correta</li>
+        <li>Profundidade: uma visão completa de como os órgãos de controle funcionam</li>
+        <li>Estrutura: ferramentas para fazer certo desde o início</li>
+      </ul>
+      <p style="font-size:14px;color:var(--gold-main);font-weight:600;margin-top:24px;font-style:italic;">
+        "Porque na gestão pública, segurança não é luxo. É necessidade."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ FAQ ══════════════════════════════════════ -->
+<section class="section section--card" id="faq">
+  <div class="container" style="max-width:780px;">
+    <div class="text-center">
+      <div class="section-label" style="display:inline-block;">FAQ</div>
+      <h2 class="section-title" style="margin-top:12px;">Perguntas <span>Frequentes</span></h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          O curso ensina como "driblar" os órgãos de controle?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Não. O curso ensina a agir com técnica e conformidade, não a burlar o sistema. O objetivo é que você faça certo desde o início, reduzindo a chance de questionamentos — não criando subterfúgios.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Sou servidor, mas não estou em cargo de gestão. Essa formação é para mim?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Sim. Qualquer servidor que instrui processos, emite pareceres, elabora documentos ou assessora gestores pode se beneficiar diretamente da formação. O conhecimento em blindagem administrativa é valioso em qualquer nível hierárquico.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          O curso aborda a nova Lei de Licitações?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Sim. A nova Lei de Licitações e Contratos (Lei nº 14.133/2021) é abordada no contexto da blindagem administrativa, com foco nas exigências formais, riscos específicos e boas práticas para gestores e servidores.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Por quanto tempo terei acesso ao curso?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          O acesso é concedido conforme os termos da plataforma de ensino utilizada. Recomendamos verificar as condições atuais na página de checkout no momento da compra.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Posso parcelar o valor de R$ 1.997,00?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          As condições de parcelamento estão disponíveis na página de checkout. Verifique as opções de pagamento no momento da compra para ver as formas disponíveis.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          O curso oferece certificado?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Sim. Ao concluir o curso, você receberá um certificado de conclusão da formação Gestor Público Blindado Brasil.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Como funciona a garantia de 7 dias?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Se dentro de 7 dias após a compra você entender que o conteúdo não atende às suas expectativas, basta solicitar o reembolso. O processo é simples, sem questionamentos e sem burocracia. Risco zero para você.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Posso usar esse conhecimento para prestar assessoria a órgãos públicos?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          Sim. Advogados, administradores, contadores e consultores que atendem o setor público encontrarão nesta formação uma base técnica sólida para oferecer serviços de assessoria em blindagem administrativa e compliance público.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CLOSING CTA ═════════════════════════════════ -->
+<section class="closing">
+  <div class="container">
+    <div class="section-label" style="display:inline-block;">A Decisão É Sua</div>
+    <h2 class="closing__headline" style="margin-top:16px;">
+      Continue Decidindo com <em>Insegurança</em> — ou Mude Isso Agora.
+    </h2>
+    <p class="closing__sub">
+      Estruture sua atuação com método, conhecimento e proteção administrativa. Seu nome e seu legado merecem isso.
+    </p>
+    <a href="#investimento" class="btn btn--primary btn--lg">
+      <svg class="shield-icon" viewBox="-2 -2 28 28" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7L12 2z"/></svg>
+      Garanta Sua Vaga Agora
+    </a>
+    <p class="cta-sub" style="margin-top:16px;">Acesso imediato &nbsp;·&nbsp; <span>Garantia de 7 dias</span> &nbsp;·&nbsp; Suporte oficial</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <svg width="32" height="36" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 5L10 22V55C10 76 28 95 50 105C72 95 90 76 90 55V22L50 5Z"
+                fill="none" stroke="#C9A227" stroke-width="4" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#fff;">Gestor Público <span style="color:var(--gold-main);">Blindado</span> Brasil</div>
+        </div>
+      </div>
+      <p class="footer-tagline">"Gestão pública segura: seu nome limpo, seu legado intacto."</p>
+      <p class="footer-copy">© 2025 Gestor Público Blindado Brasil. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════ SCRIPTS ══════════════════════════════════ -->
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Sticky nav show after hero
+  const stickyNav = document.getElementById('stickyNav');
+  const hero = document.getElementById('topo');
+  const observer = new IntersectionObserver(
+    ([entry]) => stickyNav.classList.toggle('visible', !entry.isIntersecting),
+    { threshold: 0 }
+  );
+  observer.observe(hero);
+</script>
+
+</body>
+</html>
